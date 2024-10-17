@@ -7,4 +7,5 @@ JsonSyslog is a syslog server that listens for log messages over both UDP and TC
 
 Once a message is received, it parses it and verifies that the msg string is a JSON string.
 
-![console output example](/.github/example.png)
+![console output example success](/.github/success.png)
+![console output example failure](/.github/failure.png)
