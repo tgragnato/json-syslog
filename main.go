@@ -13,7 +13,7 @@ func main() {
 	handler := syslog.NewChannelHandler(channel)
 
 	server := syslog.NewServer()
-	server.SetFormat(syslog.RFC5424)
+	server.SetFormat(syslog.Automatic)
 	server.SetHandler(handler)
 	server.ListenUDP("0.0.0.0:514")
 	server.ListenTCP("0.0.0.0:514")
@@ -25,8 +25,11 @@ func main() {
 			fmt.Println(logParts)
 			message, ok := logParts["message"].(string)
 			if !ok {
-				fmt.Println("Errore nel recupero del messaggio dal logParts")
-				continue
+				message, ok = logParts["content"].(string)
+				if !ok {
+					fmt.Println("Errore nel recupero del messaggio dal logParts")
+					continue
+				}
 			}
 
 			var prettyJSON bytes.Buffer
