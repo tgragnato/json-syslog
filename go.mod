@@ -1,6 +1,6 @@
 module tgragnato.it/json-syslog
 
-go 1.24.2
+go 1.25.0
 
 require gopkg.in/mcuadros/go-syslog.v2 v2.3.0
 
